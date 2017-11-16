@@ -1,8 +1,9 @@
 applications:
-- path: .
-  memory: 128M
-  instances: 1
-  domain: https://api.ng.bluemix.net 
+- disk_quota: 1024M
+  host: frontend-watsikon
   name: frontend-watsikon
-  disk_quota: 1024M
-  buildpack: nodejs_buildpack
+  buildpack: sdk-for-nodejs
+  command: node app.js
+  path: .
+  instances: 1
+  memory: 128M
