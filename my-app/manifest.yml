@@ -2,7 +2,7 @@ applications:
 - path: .
   memory: 128M
   instances: 1
-  domain: ng.mybluemix.net
+  domain: mybluemix.net
   name: frontend-Watsikon
   disk_quota: 1024M
   buildpack: nodejs_buildpack
