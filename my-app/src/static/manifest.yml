@@ -1,5 +1,6 @@
 applications:
 - name: my-app
   random-route: true
+  domain: https://api.ng.bluemix.net
   memory: 64M
   buildpack: staticfile_buildpack
