@@ -1,5 +1,5 @@
 applications:
 - name: frontend-watsikon
-  domain: api.ng.bluemix.net
-  memory: 128M
+  random-route: true
+  memory: 64M
   buildpack: staticfile_buildpack
