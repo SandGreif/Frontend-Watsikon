@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImageUploadComponent } from './image-upload.component';
+import {HttpClientModule} from "@angular/common/http";
+import { UploadService } from "../upload.service";
 
 describe('ImageUploadComponent', () => {
   let component: ImageUploadComponent;
@@ -8,7 +10,9 @@ describe('ImageUploadComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageUploadComponent ]
+      imports: [HttpClientModule],
+      declarations: [ ImageUploadComponent ],
+      providers: [ UploadService ]
     })
     .compileComponents();
   }));

@@ -5,6 +5,7 @@ import { UploadService } from "../upload.service";
   selector: 'app-image-upload',
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.css']
+  //providers: [UploadService],
 })
 export class ImageUploadComponent implements OnInit {
 
