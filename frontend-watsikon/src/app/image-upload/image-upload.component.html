@@ -1,7 +1,11 @@
 <form>
-  <div style="text-align:center">
-    <input type="file" id="selectFile" name="selectFile"/>
-    <input type="button"  class="btn btn-primary" (click)="uploadImage()" value="Upload image">
+  <div style="text-align:center; margin-left: 17%">
+    <label for="selectFile" style="cursor:pointer">
+      <img src="././assets/pilz_upload.jpg" />
+    </label>
+    <input type="file" id="selectFile" name="selectFile" class="selectFileButton"/>
+    <br>
+    <input type="submit" (click)="uploadImage()" value="Upload image">
   </div>
 </form>
 

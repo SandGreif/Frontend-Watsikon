@@ -5,7 +5,6 @@ import { UploadService } from "../upload.service";
   selector: 'app-image-upload',
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.css']
-  //providers: [UploadService],
 })
 export class ImageUploadComponent implements OnInit {
 
@@ -23,7 +22,6 @@ public uploadImage(): void {
     // Here, resp is of type HttpResponse<MyJsonData>.
     // You can inspect its headers:
   //  console.log(resp.headers.get('X-Custom-Header'));
-    // And access the body directly, which is typed as MyJsonData as requested.
     console.log(resp.body.someField);
   });
 }
