@@ -1,8 +1,8 @@
 applications:
 - path: .
-  name: frontend-watsikon
-  host: frontend-watsikon-host
+  name: watsikon-frontend
+  host: watsikon-frontend
   instances: 1
-  domain: ng.mybluemix.net
+  domain: mybluemix.net
   memory: 64M
   buildpack: staticfile_buildpack
