@@ -19,7 +19,7 @@ public uploadImage(): void {
     // Here, resp is of type HttpResponse<MyJsonData>.
     // You can inspect its headers:
   //  console.log(resp.headers.get('X-Custom-Header'));
-    console.log(resp.body.someField);
+    console.log(resp);
   });
 }
 }

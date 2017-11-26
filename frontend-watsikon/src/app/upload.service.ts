@@ -13,9 +13,7 @@ export class UploadService {
 
   public uploadImage(formdata: any ) {
     let _url: string = 'https://watsikontest.eu-de.mybluemix.net/watsikon/upload/picture';
-    return this.http.post(_url, formdata,  {
-      headers: {'Content-Type': 'multipart/form-data' }
-    }).catch(this.handleError) ;
+    return this.http.post(_url, formdata).catch(this.handleError) ;
   }
 
   private handleError(error: Response) {
@@ -25,3 +23,4 @@ export class UploadService {
   }
 
 }
+
