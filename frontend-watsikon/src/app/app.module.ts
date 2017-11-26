@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ErrorHandler } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -20,7 +21,7 @@ import { UploadService } from "./upload.service";
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [UploadService],
+  providers: [UploadService, ErrorHandler],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

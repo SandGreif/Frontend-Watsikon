@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { UploadService } from "../upload.service";
 
 @Component({
@@ -6,18 +6,15 @@ import { UploadService } from "../upload.service";
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.css']
 })
-export class ImageUploadComponent implements OnInit {
+export class ImageUploadComponent  {
 
   constructor(private imageUpload: UploadService, private elem: ElementRef ) { }
 
-  ngOnInit() {
-  }
-
 public uploadImage(): void {
-  let files = this.elem.nativeElement.querySelector('#selectFile').files;
+  let files = this.elem.nativeElement.querySelector('#file').files;
   let formData = new FormData();
   let file = files[0];
-  formData.append('selectFile', file, file.name);
+  formData.append('file', file, file.name);
   this.imageUpload.uploadImage(formData).subscribe(resp => {
     // Here, resp is of type HttpResponse<MyJsonData>.
     // You can inspect its headers:
