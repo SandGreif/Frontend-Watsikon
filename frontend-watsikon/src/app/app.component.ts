@@ -12,12 +12,14 @@ export class AppComponent {
   title = 'WATSIKON';
 
   @Input() info: TypeInfo;
+  @Input() errorMsg: string;
 
   constructor(private imageUpload: UploadService, private elem: ElementRef) {
     this.info = new TypeInfo;
     this.info.match = 'Match: -';
     this.info.name = 'Name: -';
-    this.info.edible = "Edible: -";
+    this.info.edibility = "Edibility: -";
+    this.info.wiki = "";
   }
 
   public uploadImage(): void {
@@ -25,18 +27,28 @@ export class AppComponent {
     let formData = new FormData();
     let file = files[0];
     formData.append('file', file, file.name);
-    this.imageUpload.uploadImage(formData).subscribe(resp => {
-      // Here, resp is of type JSON
+    this.imageUpload.uploadImage(formData).subscribe((resp) => {
+      // resp is of type JSON
       console.log(resp);
       this.info.match = 'Match: ' + resp['responseStatus'];
-      if (resp['responseStatus']=='OK'){
+      this.errorMsg = "";
+      if (resp['responseStatus'] == 'OK') {
         this.info.name = 'Name: ' + resp['name'];
-        this.info.edible = 'Edible: ' + resp['edible'];
+        this.info.edibility = 'Edibility: ' + resp['edibility'];
+        this.info.wiki = resp['wiki'];
       } else {
         this.info.name = "Name: -";
-        this.info.edible = "Edible: -";
-      }
-    });
+        this.info.edibility = "Edibility: -";
+      }},
+      (error) => {
+        console.log(error);
+        this.errorMsg = error.toLocaleString();
+        this.info.match = 'Match: -';
+        this.info.name = 'Name: -';
+        this.info.edibility = "Edibility: -";
+        this.info.wiki = "";
+        }
+    );
   }
 
 }

@@ -9,6 +9,11 @@ h1 {
   color: #4d3713;
 }
 
+.file_upload {
+  text-align:center;
+  margin-left: 17%;
+}
+
 input.selectFileButton {
   cursor: pointer;
   display: none;
@@ -49,10 +54,28 @@ input.selectFileButton {
   position: relative;
 }
 
+.error_msg {
+  position: relative;
+}
+
+.error_msg p {
+  position: absolute;
+  left: 50%;
+  margin-right: -20%;
+  margin-top: 1%;
+  color: orangered;
+}
+
+
 .infoTxt p {
   position: absolute;
   left: 50%;
   margin-right: -20%;
-  margin-top: 3%;
+  margin-top: 4%;
   transform: translate(-50%, -50%);
+}
+
+.navigation {
+  text-align:center;
+  margin-top: 8%;
 }

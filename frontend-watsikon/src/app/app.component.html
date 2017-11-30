@@ -1,10 +1,10 @@
 <div class="title">
   <h1>
-    {{title}}
+    {{ title }}
   </h1>
 </div>
 <form >
-  <div style="text-align:center; margin-left: 17%">
+  <div class="file_upload" >
     <label for="file" style="cursor:pointer">
       <img src="./assets/pilz_upload.jpg" />
     </label>
@@ -13,16 +13,26 @@
     <input type="submit" (click)="uploadImage()" value="Upload image" class="submitButton">
   </div>
 </form>
+<div class="error_msg">
+  <p>
+    {{errorMsg}} <br>
+  </p>
+</div>
 <div class="infoTxt">
-    <p>{{ info.match }} <br>
-    {{ info.name }}     <br>
-    {{ info.edible}}    <br></p>
+    <p>
+      {{ info.match }}     <br>
+      {{ info.name  }}     <br>
+      {{ info.edibility}}  <br>
+    </p>
 </div>
-<div style="text-align:center; margin-top: 7%;">
-  <input type="submit" value="Wiki" class="navButton">
-  <input type="submit" value="Yummly" class="navButton">
-  <input type="submit" value="Help" class="navButton">
+<div class="navigation">
+  <nav>
+    <input type="submit" routerLink="/wiki" value="Wiki" class="navButton">
+    <input type="submit" routerLink="/yummly" value="Yummly" class="navButton">
+    <input type="submit" routerLink="/help" value="Help"   class="navButton">
+  </nav>
 </div>
+<router-outlet></router-outlet>
 
 
 

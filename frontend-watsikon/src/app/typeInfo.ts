@@ -1,5 +1,6 @@
 export class TypeInfo {
   match: string;
   name: string;
-  edible: string;
+  edibility: string;
+  wiki: string;
 }
