@@ -3,7 +3,18 @@
     {{title}}
   </h1>
 </div>
-<router-outlet></router-outlet>
+<form >
+  <div style="text-align:center; margin-left: 17%">
+    <label for="file" style="cursor:pointer">
+      <img src="./assets/pilz_upload.jpg" />
+    </label>
+    <input type="file" id="file" name="file" class="selectFileButton">
+    <br>
+    <input type="submit" (click)="uploadImage()" value="Upload image" class="submitButton">
+  </div>
+</form>
+
+
 
 
 
