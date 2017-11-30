@@ -1,5 +1,7 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
 import { UploadService } from "./upload.service";
+import { TypeInfo } from "./typeInfo";
+
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,13 @@ import { UploadService } from "./upload.service";
 export class AppComponent {
   title = 'WATSIKON';
 
+  @Input() info: TypeInfo;
+
   constructor(private imageUpload: UploadService, private elem: ElementRef) {
+    this.info = new TypeInfo;
+    this.info.match = 'Match: -';
+    this.info.name = 'Name: -';
+    this.info.edible = "Edible: -";
   }
 
   public uploadImage(): void {
@@ -18,8 +26,17 @@ export class AppComponent {
     let file = files[0];
     formData.append('file', file, file.name);
     this.imageUpload.uploadImage(formData).subscribe(resp => {
-      // Here, resp is of type HttpResponse<MyJsonData>.
+      // Here, resp is of type JSON
       console.log(resp);
+      this.info.match = 'Match: ' + resp['responseStatus'];
+      if (resp['responseStatus']=='OK'){
+        this.info.name = 'Name: ' + resp['name'];
+        this.info.edible = 'Edible: ' + resp['edible'];
+      } else {
+        this.info.name = "Name: -";
+        this.info.edible = "Edible: -";
+      }
     });
   }
+
 }
