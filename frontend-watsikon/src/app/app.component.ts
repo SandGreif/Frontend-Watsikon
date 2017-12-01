@@ -42,7 +42,7 @@ export class AppComponent {
       }},
       (error) => {
         console.log(error);
-        this.errorMsg = error.toLocaleString();
+        this.errorMsg = 'Error: ' + error['error'];
         this.info.match = 'Match: -';
         this.info.name = 'Name: -';
         this.info.edibility = "Edibility: -";
