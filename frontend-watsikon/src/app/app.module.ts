@@ -9,6 +9,7 @@ import { UploadService } from "./upload.service";
 import { WikiComponent } from './wiki/wiki.component';
 import { YummlyComponent } from './yummly/yummly.component';
 import { HelpComponent } from './help/help.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { HelpComponent } from './help/help.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    FlexLayoutModule
   ],
   providers: [UploadService, ErrorHandler],
   bootstrap: [AppComponent]

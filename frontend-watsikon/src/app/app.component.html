@@ -1,10 +1,12 @@
-<div class="title">
+<div fxLayout='column' fxLayoutAlign="center stretch" class="title">
   <h1>
     {{ title }}
   </h1>
 </div>
+<div fxLayout='column' fxLayoutAlign="space-between center">
+     
 <form >
-  <div class="file_upload" >
+  <div fxFlex="1 50% 100%" class="file_upload" >
     <label for="file" style="cursor:pointer">
       <img src="./assets/pilz_upload.jpg" />
     </label>
@@ -13,19 +15,20 @@
     <input type="submit" (click)="uploadImage()" value="Upload image" class="submitButton">
   </div>
 </form>
-<div class="error_msg">
+
+<div fxFlex="1 50% 100%" class="error_msg">
   <p>
     {{errorMsg}} <br>
   </p>
 </div>
-<div class="infoTxt">
+<div fxFlex="1 50% 100%" class="infoTxt">
     <p>
       {{ info.match }}     <br>
       {{ info.name  }}     <br>
       {{ info.edibility}}  <br>
     </p>
 </div>
-<div class="navigation">
+<div fxFlex="1 50% 100%" class="navigation">
   <nav>
     <input type="submit" routerLink="/wiki" value="Wiki" class="navButton">
     <input type="submit" routerLink="/yummly" value="Yummly" class="navButton">
@@ -33,7 +36,7 @@
   </nav>
 </div>
 <router-outlet></router-outlet>
-
+</div>
 
 
 

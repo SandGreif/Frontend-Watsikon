@@ -1,17 +1,17 @@
 .title {
-  text-align: center;
-  margin-right: 10%;
+  background-color: #4d3713;
 }
 
 h1 {
+  text-align: center;
   font-weight: bolder;
   font-size: 42px;
-  color: #4d3713;
+  color: white;
 }
 
 .file_upload {
-  text-align:center;
-  margin-left: 17%;
+  position: relative;
+  margin: 10px 0px 0px 200px;
 }
 
 input.selectFileButton {
@@ -19,14 +19,15 @@ input.selectFileButton {
   display: none;
 }
 
-
 .submitButton {
   background-color: white;
   color: black;
   border: 2px solid rgb(250, 150, 0);
   border-radius: 4px;
-  overflow:hidden;
-  cursor:pointer;
+  overflow: hidden;
+  cursor: pointer;
+  position: absolute;
+  margin: -70px 0px 0px -100px;
 }
 
 .submitButton:hover {
@@ -50,32 +51,8 @@ input.selectFileButton {
   cursor:pointer;
 }
 
-.infoTxt {
-  position: relative;
-}
-
-.error_msg {
-  position: relative;
-}
-
 .error_msg p {
-  position: absolute;
-  left: 50%;
-  margin-right: -20%;
-  margin-top: 1%;
+  position: relative;
   color: orangered;
 }
 
-
-.infoTxt p {
-  position: absolute;
-  left: 50%;
-  margin-right: -20%;
-  margin-top: 4%;
-  transform: translate(-50%, -50%);
-}
-
-.navigation {
-  text-align:center;
-  margin-top: 8%;
-}
