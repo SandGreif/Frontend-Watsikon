@@ -3,10 +3,13 @@
 }
 
 h1 {
+  font-family: 'Mogra', cursive;
   text-align: center;
   font-weight: bolder;
-  font-size: 42px;
+  font-size: 62px;
   color: white;
+  margin-bottom: 2%;
+
 }
 
 .file_upload {
@@ -29,6 +32,7 @@ input.selectFileButton {
   position: absolute;
   margin: -70px 0px 0px -120px;
   font-size: 15px;
+  font-family: 'Reenie Beanie', cursive;
 }
 
 .submitButton:hover {
@@ -43,6 +47,7 @@ input.selectFileButton {
   border: 8px solid rgb(250, 150, 0);
   border-radius: 2px;
   cursor:pointer;
+  font-family: 'Reenie Beanie', cursive;
   font-size: 20px;
 }
 
@@ -52,8 +57,18 @@ input.selectFileButton {
   cursor:pointer;
 }
 
+.infoTxt {
+  font-family: 'Reenie Beanie', cursive;
+  margin-top: -22px;
+}
+
 .error_msg p {
   position: relative;
   color: orangered;
+  margin-top: -2px;
 }
 
+.navigation {
+  margin-top: 10px;
+  font-family: 'Reenie Beanie', cursive;
+}

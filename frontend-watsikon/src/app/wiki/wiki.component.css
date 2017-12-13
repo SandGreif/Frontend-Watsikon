@@ -1,5 +1,10 @@
+.txtbox {
+  align-content: center;
+  width: 350px;
+}
+
 .txt {
   text-align: left;
-  margin-top: 5%;
-  width: 400px;
+  margin-top: 8%;
+  font-family: 'Reenie Beanie', cursive;
 }
