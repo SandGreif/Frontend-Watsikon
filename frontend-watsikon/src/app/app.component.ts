@@ -57,12 +57,20 @@ export class AppComponent {
         if (err.error instanceof Error) {
           // A client-side or network error occurred. Handle it accordingly.
           console.log('An error occurred:', err.error.message);
+          this.errorMsg = 'Error: ' + err.error.message;
         } else {
           // The backend returned an unsuccessful response code.
           // The response body may contain clues as to what went wrong,
           console.log(`Backend returned code ${err.status}, body was: ${err.error['error']}`);
+          switch(err.error['error']) {
+            case 'NOPICTURE':
+            this.errorMsg = 'Error: ' + 'The uploaded file must be an image of type JPG or PNG'; 
+            break;
+            case 'FILETOOBIG':
+            this.errorMsg = 'Error: ' + 'Maximum image size is 1.5MB'; 
+            break;
+          }
         }
-        this.errorMsg = err.error['error'];
         this.info.match = 'Match: -';
         this.info.name = 'Name: -';
         this.info.edibility = "Edibility: -";

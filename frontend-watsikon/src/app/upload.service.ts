@@ -19,7 +19,6 @@ export class UploadService {
   private handleError(error: Response) {
     console.error('Error Occured: ' + error);
     return Observable.throw(error || 'Some Error on Server Occured');
-
   }
 
 }
