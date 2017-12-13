@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WikipediaService } from '.././wikipedia.service';
 
 @Component({
   selector: 'app-wiki',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WikiComponent implements OnInit {
 
-  constructor() { }
+  message: string;
+  
+  constructor(private wiki: WikipediaService) { }
 
   ngOnInit() {
+    this.wiki.currentMessage.subscribe(message => this.message = message)
   }
 
 }

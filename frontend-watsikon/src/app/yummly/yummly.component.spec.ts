@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { YummlyComponent } from './yummly.component';
+import {YummlyService} from '.././yummly.service';
 
 describe('YummlyComponent', () => {
   let component: YummlyComponent;
@@ -8,7 +9,8 @@ describe('YummlyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YummlyComponent ]
+      declarations: [ YummlyComponent ],
+      providers: [ YummlyService ]
     })
     .compileComponents();
   }));

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { YummlyService } from ".././yummly.service";
 
 @Component({
   selector: 'app-yummly',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class YummlyComponent implements OnInit {
 
-  constructor() { }
+  message: string;
+
+  constructor(private yummly: YummlyService) { }
 
   ngOnInit() {
+    this.yummly.currentMessage.subscribe(message => this.message = message)
   }
-
 }

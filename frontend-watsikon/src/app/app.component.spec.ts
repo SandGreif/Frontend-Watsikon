@@ -4,13 +4,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { HttpClientModule } from "@angular/common/http";
 import { UploadService } from "./upload.service";
+import { YummlyService } from "./yummly.service";
+import { WikipediaService } from "./wikipedia.service";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientModule],
       declarations: [AppComponent],
-      providers: [ UploadService ]
+      providers: [ UploadService, YummlyService, WikipediaService ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

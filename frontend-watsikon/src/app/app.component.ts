@@ -1,6 +1,9 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { UploadService } from "./upload.service";
 import { TypeInfo } from "./typeInfo";
+import { HttpErrorResponse } from '@angular/common/http';
+import { YummlyService } from "./yummly.service";
+import { WikipediaService } from "./wikipedia.service";
 
 
 @Component({
@@ -13,13 +16,21 @@ export class AppComponent {
 
   @Input() info: TypeInfo;
   @Input() errorMsg: string;
+  
+  txtYummly : string;
+  txtWiki : string;
 
-  constructor(private imageUpload: UploadService, private elem: ElementRef) {
+  constructor(private yummly: YummlyService, private wiki: WikipediaService, private imageUpload: UploadService, private elem: ElementRef) {
     this.info = new TypeInfo;
     this.info.match = 'Match: -';
     this.info.name = 'Name: -';
     this.info.edibility = "Edibility: -";
-    this.info.wiki = "";
+  }
+
+  ngOnInit() {
+    this.yummly.currentMessage.subscribe(message => this.txtYummly = message)
+    this.yummly.currentMessage.subscribe(message => this.txtWiki = message)
+    
   }
 
   public uploadImage(): void {
@@ -35,20 +46,28 @@ export class AppComponent {
       if (resp['responseStatus'] == 'OK') {
         this.info.name = 'Name: ' + resp['name'];
         this.info.edibility = 'Edibility: ' + resp['edibility'];
-        this.info.wiki = resp['wiki'];
+        this.wiki.changeMessage(resp['wikitext']);
       } else {
         this.info.name = "Name: -";
         this.info.edibility = "Edibility: -";
+        this.yummly.changeMessage('no txt');
+        this.wiki.changeMessage('no txt');
       }},
-      (error) => {
-        console.log(error);
-        this.errorMsg = 'Error: ' + error['error'];
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          // A client-side or network error occurred. Handle it accordingly.
+          console.log('An error occurred:', err.error.message);
+        } else {
+          // The backend returned an unsuccessful response code.
+          // The response body may contain clues as to what went wrong,
+          console.log(`Backend returned code ${err.status}, body was: ${err.error['error']}`);
+        }
+        this.errorMsg = err.error['error'];
         this.info.match = 'Match: -';
         this.info.name = 'Name: -';
         this.info.edibility = "Edibility: -";
-        this.info.wiki = "";
-        }
-    );
-  }
-
+        this.yummly.changeMessage('no txt');
+        this.wiki.changeMessage('no txt');
+       });
+    }
 }
