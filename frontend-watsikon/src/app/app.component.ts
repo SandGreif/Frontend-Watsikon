@@ -19,6 +19,9 @@ export class AppComponent {
   
   txtYummly : string;
   txtWiki : string;
+  image: any;
+  urlCache: any;
+  url: any;
 
   constructor(private yummly: YummlyService, private wiki: WikipediaService, private imageUpload: UploadService, private elem: ElementRef) {
     this.info = new TypeInfo;
@@ -30,7 +33,16 @@ export class AppComponent {
   ngOnInit() {
     this.yummly.currentMessage.subscribe(message => this.txtYummly = message)
     this.yummly.currentMessage.subscribe(message => this.txtWiki = message)
-    
+  }
+
+  readUrl(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event:any) => {
+        this.urlCache = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 
   public uploadImage(): void {
@@ -44,10 +56,13 @@ export class AppComponent {
       this.info.match = 'Match: ' + resp['responseStatus'];
       this.errorMsg = "";
       if (resp['responseStatus'] == 'OK') {
+        this.url = this.urlCache;
+        this.image = formData;
         this.info.name = 'Name: ' + resp['name'];
         this.info.edibility = 'Edibility: ' + resp['edibility'];
         this.wiki.changeMessage(resp['wikitext']);
       } else {
+        this.url = "";    
         this.info.name = "Name: -";
         this.info.edibility = "Edibility: -";
         this.yummly.changeMessagedefault();
@@ -71,6 +86,7 @@ export class AppComponent {
             break;
           }
         }
+        this.url = "";        
         this.info.match = 'Match: -';
         this.info.name = 'Name: -';
         this.info.edibility = "Edibility: -";
