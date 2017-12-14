@@ -79,13 +79,25 @@ export class AppComponent {
           // The backend returned an unsuccessful response code.
           // The response body may contain clues as to what went wrong,
           console.log(`Backend returned code ${err.status}, body was: ${err.error.message}`);
-          switch(err.error['error']) {
-            case 'NOPICTURE':
-            this.errorMsg = 'Error: ' + 'The uploaded file must be an image of type JPG or PNG'; 
+
+          switch(err.status) {
+            case 400:
+            this.errorMsg = 'Error 400: ' + 'The uploaded file must be an image of type JPG or PNG'; 
             break;
-            case 'FILETOOBIG':
-            this.errorMsg = 'Error: ' + 'Maximum image size is 1.5MB'; 
+            case 401:
+            this.errorMsg = 'Error: ' + 'No API key provided, or the API key provided was not valid'; 
             break;
+            case 404:
+            this.errorMsg = 'Error: ' + 'The requested item or parameter doesn\'t exist'; 
+            break;
+            case 413:
+            this.errorMsg = 'Error 413: ' + 'Maximum image size is 1.5MB'; 
+            break;
+            case 500:
+            this.errorMsg = 'Error: ' + 'Too many training requests or general server communication problems'; 
+            break;
+            default:
+            this.errorMsg = 'Error ' + err.status + ': ' + err.error.message;
           }
         }
         this.url = "";        
