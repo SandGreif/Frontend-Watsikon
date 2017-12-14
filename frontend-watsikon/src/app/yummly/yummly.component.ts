@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { YummlyService } from ".././yummly.service";
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-yummly',
@@ -8,11 +9,18 @@ import { YummlyService } from ".././yummly.service";
 })
 export class YummlyComponent implements OnInit {
 
-  message: string;
+  safeUrl: SafeUrl;
 
-  constructor(private yummly: YummlyService) { }
+  constructor(private yummly: YummlyService, private sanitizer: DomSanitizer) { 
+  }
 
   ngOnInit() {
-    this.yummly.currentMessage.subscribe(message => this.message = message)
+    this.yummly.currentMessage.subscribe(url => 
+      this.updateUrl(url))
+  }
+
+  private updateUrl(url: string) {
+    // check if url is safe
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

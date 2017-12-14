@@ -4,16 +4,16 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class YummlyService {
 
-  private messagDefault = new BehaviorSubject<string>("Not yet implemented");
+  private messagDefault = new BehaviorSubject<string>("");
   currentMessage = this.messagDefault.asObservable();
 
   constructor() { }
 
-  changeMessage(message : string) {
-    this.messagDefault.next(message)
+  changeMessage(url : string) {
+    this.messagDefault.next(url)
   }
 
   changeMessagedefault(){
-    this.messagDefault.next("Not yet implemented")
+    this.messagDefault.next("")
   }
 }

@@ -17,7 +17,7 @@ export class AppComponent {
   @Input() info: TypeInfo;
   @Input() errorMsg: string;
   
-  txtYummly : string;
+  UrlYummly : string;
   txtWiki : string;
   image: any;
   urlCache: any;
@@ -31,8 +31,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.yummly.currentMessage.subscribe(message => this.txtYummly = message)
-    this.yummly.currentMessage.subscribe(message => this.txtWiki = message)
+    this.yummly.currentMessage.subscribe(url => this.UrlYummly = url)
+    this.wiki.currentMessage.subscribe(message => this.txtWiki = message)
   }
 
   readUrl(event:any) {
@@ -61,6 +61,7 @@ export class AppComponent {
         this.info.name = 'Name: ' + resp['name'];
         this.info.edibility = 'Edibility: ' + resp['edibility'];
         this.wiki.changeMessage(resp['wikitext']);
+        this.yummly.changeMessage(resp['recipeHTML']);
       } else {
         this.info.match = 'Match: ' + 'not found';
         this.url = "";    

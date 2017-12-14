@@ -1,6 +1,7 @@
-.txtbox {
+.urlbox {
   align-content: center;
   width: 350px;
+  margin-top: 8%;
 }
 
 .txt {
@@ -9,3 +10,4 @@
   font-size: 25px;
   font-family: 'Reenie Beanie', cursive;
 }
+
