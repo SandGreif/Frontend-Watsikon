@@ -61,7 +61,9 @@ export class AppComponent {
         this.info.name = 'Name: ' + resp['name'];
         this.info.edibility = 'Edibility: ' + resp['edibility'];
         this.wiki.changeMessage(resp['wikitext']);
-        this.yummly.changeMessage(resp['recipeHTML']);
+        if(resp['recipeHTML'] != ""){
+          this.yummly.changeMessage(resp['recipeHTML']);        
+        }
       } else {
         this.info.match = 'Match: ' + 'not found';
         this.url = "";    
