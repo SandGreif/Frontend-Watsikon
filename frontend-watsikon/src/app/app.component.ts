@@ -53,15 +53,16 @@ export class AppComponent {
     this.imageUpload.uploadImage(formData).subscribe((resp) => {
       // resp is of type JSON
       console.log(resp);
-      this.info.match = 'Match: ' + resp['responseStatus'];
       this.errorMsg = "";
       if (resp['responseStatus'] == 'OK') {
+        this.info.match = 'Match: ' + 'found';
         this.url = this.urlCache;
         this.image = formData;
         this.info.name = 'Name: ' + resp['name'];
         this.info.edibility = 'Edibility: ' + resp['edibility'];
         this.wiki.changeMessage(resp['wikitext']);
       } else {
+        this.info.match = 'Match: ' + 'not found';
         this.url = "";    
         this.info.name = "Name: -";
         this.info.edibility = "Edibility: -";
