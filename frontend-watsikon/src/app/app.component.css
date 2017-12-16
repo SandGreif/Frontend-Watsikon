@@ -67,18 +67,25 @@ input.selectFileButton {
 .infoTxt {
   font-family: 'Reenie Beanie', cursive;
   font-size: 30px;
-  margin-top: -22px;
+  margin-top: -40px;
+}
+
+.usage p {
+  position: relative;
+  color: black;
+  margin-top: -8px;
+  font-size: 14px;
 }
 
 .error_msg p {
   position: relative;
   color: orangered;
-  margin-top: -8px;
+  margin-top: -10px;
   font-size: 14px;
 }
 
 .navigation {
-  margin-top: 10px;
+  margin-top: 0px;
   font-size: 30px;
   font-family: 'Reenie Beanie', cursive;
 }

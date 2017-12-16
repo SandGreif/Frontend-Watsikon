@@ -16,9 +16,15 @@
     <input type="submit" (click)="uploadImage()" value="Upload image" class="submitButton">
   </div>
 </form>
+<ng4-loading-spinner> </ng4-loading-spinner>
 <div fxFlex="1 50% 100%">
-  <img [src]="url" id="image">
+  <img [src]="url" id="image" onerror="this.src='./assets/placeholder.png'" />  
 </div>  
+<div fxFlex="1 50% 100%" class="usage">
+  <p>
+    {{usageMsg}} <br>
+  </p>
+</div>
 <div fxFlex="1 50% 100%" class="error_msg">
   <p>
     {{errorMsg}} <br>

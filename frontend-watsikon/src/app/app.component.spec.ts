@@ -6,13 +6,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { UploadService } from "./upload.service";
 import { YummlyService } from "./yummly.service";
 import { WikipediaService } from "./wikipedia.service";
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule],
+      imports: [RouterTestingModule, HttpClientModule, Ng4LoadingSpinnerModule],
       declarations: [AppComponent],
-      providers: [ UploadService, YummlyService, WikipediaService ]
+      providers: [ UploadService, YummlyService, WikipediaService]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

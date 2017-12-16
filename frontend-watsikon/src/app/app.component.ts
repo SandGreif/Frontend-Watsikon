@@ -4,6 +4,7 @@ import { TypeInfo } from "./typeInfo";
 import { HttpErrorResponse } from '@angular/common/http';
 import { YummlyService } from "./yummly.service";
 import { WikipediaService } from "./wikipedia.service";
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 
 @Component({
@@ -16,14 +17,14 @@ export class AppComponent {
 
   @Input() info: TypeInfo;
   @Input() errorMsg: string;
-  
+  @Input() usageMsg: string = "Click on the brown mushroom above to select a picture";
   UrlYummly : string;
   txtWiki : string;
   image: any;
   urlCache: any;
   url: any;
 
-  constructor(private yummly: YummlyService, private wiki: WikipediaService, private imageUpload: UploadService, private elem: ElementRef) {
+  constructor(private spinnerService: Ng4LoadingSpinnerService, private yummly: YummlyService, private wiki: WikipediaService, private imageUpload: UploadService, private elem: ElementRef) {
     this.info = new TypeInfo;
     this.info.match = 'Match: -';
     this.info.name = 'Name: -';
@@ -46,33 +47,36 @@ export class AppComponent {
   }
 
   public uploadImage(): void {
+    this.spinnerService.show();
     let files = this.elem.nativeElement.querySelector('#file').files;
     let formData = new FormData();
     let file = files[0];
     formData.append('file', file, file.name);
     this.imageUpload.uploadImage(formData).subscribe((resp) => {
+      this.spinnerService.hide();
       // resp is of type JSON
       console.log(resp);
       this.errorMsg = "";
+      this.usageMsg = "";
+      this.image = formData;
+      this.url = this.urlCache;
       if (resp['responseStatus'] == 'OK') {
         this.info.match = 'Match: ' + 'found';
-        this.url = this.urlCache;
-        this.image = formData;
         this.info.name = 'Name: ' + resp['name'];
         this.info.edibility = 'Edibility: ' + resp['edibility'];
         this.wiki.changeMessage(resp['wikitext']);
         if(resp['recipeHTML'] != ''){
-          this.yummly.changeMessage(resp['recipeHTML']);        
+        this.yummly.changeMessage(resp['recipeHTML']);        
         }
       } else {
-        this.info.match = 'Match: ' + 'not found';
-        this.url = "";    
+        this.info.match = 'Match: ' + 'not found';   
         this.info.name = "Name: -";
         this.info.edibility = "Edibility: -";
         this.yummly.changeMessagedefault();
         this.wiki.changeMessagedefault();
       }},
       (err: HttpErrorResponse) => {
+        this.spinnerService.hide();
         if (err.error instanceof Error) {
           // A client-side or network error occurred. Handle it accordingly.
           console.log('An error occurred:', err.error.message);
@@ -81,7 +85,7 @@ export class AppComponent {
           // The backend returned an unsuccessful response code.
           // The response body may contain clues as to what went wrong,
           console.log(`Backend returned code ${err.status}, body was: ${err.error.message}`);
-
+          this.usageMsg ="Click on the brown mushroom above to select a picture";
           switch(err.status) {
             case 400:
             this.errorMsg = 'Error 400: ' + 'The uploaded file must be an image of type JPG or PNG'; 

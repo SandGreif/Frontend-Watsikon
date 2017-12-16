@@ -11,7 +11,8 @@ import { YummlyComponent } from './yummly/yummly.component';
 import { HelpComponent } from './help/help.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { YummlyService } from "./yummly.service";
-import { WikipediaService } from "./wikipedia.service"
+import { WikipediaService } from "./wikipedia.service";
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { WikipediaService } from "./wikipedia.service"
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [UploadService, ErrorHandler, YummlyService, WikipediaService],
   bootstrap: [AppComponent]
