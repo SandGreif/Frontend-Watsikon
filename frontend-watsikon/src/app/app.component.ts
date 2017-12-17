@@ -65,15 +65,17 @@ export class AppComponent {
         this.info.name = 'Name: ' + resp['name'];
         this.info.edibility = 'Edibility: ' + resp['edibility'];
         this.wiki.changeMessage(resp['wikitext']);
-        if(resp['recipeHTML'] != ''){
+        if(resp['recipeHTML']){
         this.yummly.changeMessage(resp['recipeHTML']);        
+        } else {
+          this.yummly.changeMessagedefault();
         }
       } else {
         this.info.match = 'Match: ' + 'not found';   
         this.info.name = "Name: -";
         this.info.edibility = "Edibility: -";
-        this.yummly.changeMessagedefault();
         this.wiki.changeMessagedefault();
+        this.yummly.changeMessagedefault();
       }},
       (err: HttpErrorResponse) => {
         this.spinnerService.hide();

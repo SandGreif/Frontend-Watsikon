@@ -14,6 +14,6 @@ export class YummlyService {
   }
 
   changeMessagedefault(){
-    this.messagDefault.next("https://www.yummly.com/")
+    this.messagDefault.next("")
   }
 }
