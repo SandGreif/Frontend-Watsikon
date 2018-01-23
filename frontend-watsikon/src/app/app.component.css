@@ -13,9 +13,9 @@ h1 {
 }
 
 #image {
-  max-width: 300px;
+  max-width: 350px;
   max-height: 300px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .file_upload {
@@ -37,8 +37,8 @@ input.selectFileButton {
   cursor: pointer;
   position: absolute;
   margin: -70px 0px 0px -150px;
-  font-size: 30px;
-  font-family: 'Reenie Beanie', cursive;
+  font-size: 22px;
+  font-family: 'Dekko', cursive;
 }
 
 .submitButton:hover {
@@ -54,7 +54,7 @@ input.selectFileButton {
   border-radius: 2px;
   cursor:pointer;
   font-family: 'Reenie Beanie', cursive;
-  font-size: 30px;
+  font-size: 36px;
   font-weight: bold;
 }
 
@@ -65,27 +65,27 @@ input.selectFileButton {
 }
 
 .infoTxt {
-  font-family: 'Reenie Beanie', cursive;
-  font-size: 30px;
-  margin-top: -40px;
+  font-family: 'Dekko', cursive;
+  font-size: 16px;
+  margin-top: -26px;
 }
 
 .usage p {
   position: relative;
   color: black;
-  margin-top: -8px;
-  font-size: 14px;
+  margin-top: -26px;
+  font-size: 16px;
 }
 
 .error_msg p {
   position: relative;
   color: orangered;
-  margin-top: -10px;
+  margin-top: -14px;
   font-size: 14px;
 }
 
 .navigation {
-  margin-top: 0px;
+  margin-top: 16px;
   font-size: 30px;
   font-family: 'Reenie Beanie', cursive;
 }
